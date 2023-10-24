@@ -11,6 +11,8 @@ package com.javatunes.member;
 public class Client {
 
     public static void main(String[] args) {
-        new SubMember();
+        new SubMember();      // should call to the member ctor to fire ctor. Parent must execute first in
+                            // order for child ctor to execute.
+
     }
 }
