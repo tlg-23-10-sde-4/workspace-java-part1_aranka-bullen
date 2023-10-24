@@ -9,6 +9,7 @@ public class SalariedEmployee extends Employee {
 
     //constructors
     public SalariedEmployee() {
+        super();
     }
 
     public SalariedEmployee(String name, LocalDate hireDate) {
