@@ -26,6 +26,7 @@ public class Employee {
     private String name;
     private LocalDate hireDate;
 
+
     // constructors
     public Employee() {
     }
@@ -35,10 +36,12 @@ public class Employee {
         setHireDate(hireDate);
     }
 
+
     // business methods
     public void work() {
         System.out.println(getName() + " working hard since " + getHireDate());
     }
+
 
     // accessor methods
     public String getName() {

@@ -26,7 +26,7 @@ public class Department {
     // fields
     private String name;
     private String location;
-    private Employee[] employees = new Employee[100];
+    private final Employee[] employees = new Employee[100];
     private int currentIndex = 0;  // for dealing with the array
 
     // constructors
@@ -54,7 +54,7 @@ public class Department {
     }
 
     // helper method to add an Employee to the array
-    public void addEmployee(Employee emp) {
+    public void addEmployee(Employee emp) {  // variable emp is assigned 0 at the employees[currentindex] array
         employees[currentIndex++] = emp;
     }
 
