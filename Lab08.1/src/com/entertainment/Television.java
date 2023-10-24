@@ -36,8 +36,8 @@ public class Television {
     private DisplayType display = DisplayType.LED;
 
 
-    //Television HAS-A Tuner
-    private Tuner tuner = new Tuner(); // instantiated internally, not exposed (no get/set)
+    //Television HAS-A Tuner [Television] -> Tuner
+    private final Tuner tuner = new Tuner(); // instantiated internally, not exposed (no get/set)
 
     //for muting behavior
     private  boolean isMuted; //provide getter only

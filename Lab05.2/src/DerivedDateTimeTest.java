@@ -18,6 +18,8 @@ import java.time.temporal.TemporalAdjuster;
 import java.time.temporal.TemporalAdjusters;
 
 import static java.time.temporal.TemporalAdjusters.*;
+import static java.time.DayOfWeek.*;  // MONDAY instead of DayOfWeek.MONDAY
+
 
 class DerivedDateTimeTest {
 
@@ -41,7 +43,9 @@ class DerivedDateTimeTest {
      * RESULT:
      */
     public static void testPresidentsFirst100Days() {
-        // TODO
+        LocalDate inauguration = LocalDate.of(2017, 1, 20);
+        LocalDate deadline = inauguration.plusDays(100);
+        System.out.println(deadline);
     }
 
     /**
@@ -53,7 +57,9 @@ class DerivedDateTimeTest {
      */
     public static void testPopularBirthdays() {
         // TODO: what is the average birthday of someone conceived on Valentine's Day?
-
+        LocalDate vday = LocalDate.of(2023, 2, 14);
+        LocalDate bday = vday.plusWeeks(38);
+        System.out.println(bday);
 
         // TODO: what is the average birthday of someone conceived on New Year's Eve (after midnight)?
     }
@@ -66,10 +72,11 @@ class DerivedDateTimeTest {
      * RESULT:
      */
     public static void testEarlyRetirement() {
-        LocalDate retirement = LocalDate.of(1992,8,30).plusYears(59).plusMonths(6);
+        LocalDate bday = LocalDate.of(1992, 8, 30);
+        LocalDate retirement = bday.plusYears(59).plusMonths(6);
         System.out.println(retirement);
+        System.out.println(retirement.getDayOfWeek());
     }
-
     /**
      * TASK: when was Labor Day during the year you were born?
      * Note: start with a LocalDate equal to your birthday.
@@ -90,7 +97,9 @@ class DerivedDateTimeTest {
      * RESULT:
      */
     public static void testElectionDay() {
-        // TODO
+        LocalDate nov1 = LocalDate.of(2024, 11, 1);
+        LocalDate election = nov1.with(nextOrSame(MONDAY)).plusDays(1);
+        System.out.println(election);
     }
 
     /**
@@ -102,6 +111,10 @@ class DerivedDateTimeTest {
      * RESULT:
      */
     public static void testAnniversary() {
-        // TODO
+        LocalDate wedding = LocalDate.of(1969, 6, 6);
+        LocalDate anniversary = wedding.plusYears(50);
+        LocalDate party = anniversary.with(nextOrSame(SATURDAY));
+        System.out.println(party);
+        System.out.println(party.getDayOfWeek());
     }
 }
