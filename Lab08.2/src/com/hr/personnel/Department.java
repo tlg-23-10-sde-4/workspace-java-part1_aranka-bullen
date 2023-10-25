@@ -26,7 +26,7 @@ public class Department {
     // fields
     private String name;
     private String location;
-    private final Employee[] employees = new Employee[100];
+    private final Employee[] employees = new Employee[100]; // creates an array Employee with a size of 100
     private int currentIndex = 0;  // for dealing with the array
 
     // constructors
@@ -53,6 +53,13 @@ public class Department {
         }
     }
 
+    public void payEmployees() {
+        for (int i = 0; i < currentIndex; i++) {
+            employees[i].pay();
+        }
+    }
+
+
     // helper method to add an Employee to the array
     public void addEmployee(Employee emp) {  // variable emp is assigned 0 at the employees[currentindex] array
         employees[currentIndex++] = emp;
@@ -75,6 +82,7 @@ public class Department {
         this.location = location;
     }
 
+    @Override
     public String toString() {
         return "Department: name=" + getName() + ", location=" + getLocation();
     }

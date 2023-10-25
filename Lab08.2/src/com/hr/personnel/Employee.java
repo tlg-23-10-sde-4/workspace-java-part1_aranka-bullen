@@ -21,7 +21,7 @@ import java.time.LocalDate;
  *   void work()        simulates work by printing a message to show it was called.
  *   String toString()  self-explanatory.
  */
-public class Employee {
+public abstract class Employee {
     // fields
     private String name;
     private LocalDate hireDate;
@@ -41,6 +41,15 @@ public class Employee {
     public void work() {
         System.out.println(getName() + " working hard since " + getHireDate());
     }
+
+    /*
+     * We declared that all employees get paid, but it is not implemented here b/c it can't be done
+     * because there is no data to perform the task.
+     */
+
+    public abstract void pay();  // if the abstract then there cannot be a body b/c the method cannot
+                                    // be executed in the abstract class(Employee) and must be directed to methods
+                                    // the sub-class (HourlyEmployee and SalariedEmployee)
 
 
     // accessor methods
@@ -62,6 +71,8 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "Employee: name=" + getName() + ", hireDate=" + getHireDate();
+//        return String.format("%s: %s %s=\n" ,getClass().getName(), getName(), getHireDate());
+
+        return String.format("%s: Name=%s HireDate=%s\n" ,getClass().getSimpleName(), getName(), getHireDate());
     }
 }

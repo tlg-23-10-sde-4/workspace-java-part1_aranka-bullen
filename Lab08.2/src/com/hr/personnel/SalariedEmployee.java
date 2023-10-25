@@ -25,6 +25,16 @@ public class SalariedEmployee extends Employee {
 
     }
 
+    // Business methods
+    @Override
+    public void pay() {
+        double payment = getSalary();
+        System.out.printf("%s is paid %s\n", super.getName(), payment);
+    }
+
+
+
+
     //getters and setters
 
 
@@ -37,9 +47,11 @@ public class SalariedEmployee extends Employee {
         this.salary = salary;
     }
 
+    @Override
     //toString
     public String toString() {
-        return String.format("%s: Name=%s, HireDate=%s, Salary=%s\n",
-            getClass().getSimpleName(), getName(), getHireDate(), getSalary());
+//        return super.toString() + " Salary=" + getSalary();
+
+       return String.format("%s, Salary=%s\n", super.toString(), getSalary());
     }
 }
