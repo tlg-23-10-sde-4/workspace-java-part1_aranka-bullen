@@ -59,6 +59,32 @@ public class Department {
         }
     }
 
+    /*
+     * Forced vacation for all employee that take vacation
+     * make them take vacation
+     *
+     * If employees at i is really pointing to more specific type (SalariedEmployee) then
+     * downcast reference to more specific type (SalariedEmployee)
+     * This will allow me to call specific-type methods, (like takeVacation())
+     */
+    public void holidayBreak() {
+        for (int i = 0; i <currentIndex; i++){
+
+
+
+
+            if (employees[i] instanceof SalariedEmployee) {
+                // Below: downcast-and-method-call in one shot on SalariedEmployees
+//                ((SalariedEmployee) employees[i]).takeVacation();
+
+                //explicit downcast to a SalariedEmployee object (semp) followed by method call on SalariedEmployees object
+                SalariedEmployee semp = (SalariedEmployee) employees[i];
+                semp.takeVacation();
+            }
+        }
+    }
+
+
 
     // helper method to add an Employee to the array
     public void addEmployee(Employee emp) {  // variable emp is assigned 0 at the employees[currentindex] array

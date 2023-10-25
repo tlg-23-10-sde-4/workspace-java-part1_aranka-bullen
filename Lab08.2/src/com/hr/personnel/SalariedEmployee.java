@@ -32,7 +32,9 @@ public class SalariedEmployee extends Employee {
         System.out.printf("%s is paid %s\n", super.getName(), payment);
     }
 
-
+    public void takeVacation() {
+        System.out.printf("%s is on vacation!!\n", getName());
+    }
 
 
     //getters and setters
