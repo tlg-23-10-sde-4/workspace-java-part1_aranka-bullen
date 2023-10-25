@@ -34,6 +34,12 @@ public class Executive extends SalariedEmployee {
     public void payTaxes() {
        super.payTaxes();
     }
+
+    @Override
+    public void fileReturn() {
+        System.out.println("Return filed electronically");
+    }
+
     //TOSTRING
 
 }
