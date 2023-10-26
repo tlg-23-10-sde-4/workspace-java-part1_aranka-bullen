@@ -31,7 +31,7 @@ public abstract class Employee implements TaxPayer {
     public Employee() {
     }
 
-    public Employee(String name, LocalDate hireDate) {
+    public Employee(String name, LocalDate hireDate) throws IllegalArgumentException {
         setName(name);
         setHireDate(hireDate);
     }
