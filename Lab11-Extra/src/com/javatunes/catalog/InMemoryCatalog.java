@@ -8,15 +8,15 @@
 
 package com.javatunes.catalog;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.time.LocalDate;
+import java.util.*;
+import java.util.concurrent.Callable;
 
 // OF COURSE THIS CLASS DOESN'T COMPILE
 // Your first job is to fulfill the contract that this class has signed.
-public abstract class InMemoryCatalog implements Catalog {
+public class InMemoryCatalog implements Catalog {
 
-    private List<MusicItem> catalogData = new ArrayList<>(List.of(
+    private final List<MusicItem> catalogData = new ArrayList<>(List.of(
                    /* id    title                        artist                       releaseDate  price  musicCategory */
         new MusicItem(1L,  "Diva",                      "Annie Lennox",              "1992-01-04", 13.99, MusicCategory.POP),
         new MusicItem(2L,  "Dream of the Blue Turtles", "Sting",                     "1985-02-05", 14.99, MusicCategory.POP),
@@ -61,11 +61,83 @@ public abstract class InMemoryCatalog implements Catalog {
      *    It's not just about removing redundancies - it will make the more complicated methods easier to write!
      */
 
+    //Implementation Methods
+
+    @Override
+    public MusicItem findById(Long id) {
+        MusicItem item = null;
+
+        for(MusicItem currentItem : catalogData) {
+            if(currentItem.getId().equals(id)){
+            item = currentItem;
+            break;
+        }}
+        return item;
+    }
+
+    @Override
+    public Collection<MusicItem> findByKeyword(String keyword) {
+        Scanner scanner = new Scanner(System.in);
+        String input = scanner.nextLine();
+
+        Collection<MusicItem> result = new ArrayList<>();
+
+//        for(MusicItem item : catalogData) {
+//            if(input.equals(item)) {
+//                result.add();
+//            }
+//        }
+
+
+        for (MusicItem item : catalogData) {
+            if (item.getTitle().equals(keyword) || item.getArtist().equals(keyword) || item.LogetReleaseDate().equals(Date.parse(keyword))) {
+                result.add(item);
+            }
+
+        }
+
+        }
+
+
+    @Override
+    public Collection<MusicItem> findByCategory(MusicCategory category) {
+        Collection<MusicItem> result = new ArrayList<>();
+            for(MusicItem currentItem: catalogData){
+                if (currentItem.getMusicCategory().equals(category)) {
+                    result.add(currentItem);
+                }
+            }
+            return result;
+        }
+
+
+
+    @Override
+    public int size() {
+        return 0;
+    }
+
+    @Override
+    public Collection<MusicItem> getAll() {
+        return null;
+    }
+
     /**
      * TASK: find all MusicItems where title is same as artist.
      * For example, Madonna's first album is simply titled, "Madonna."
      */
 
+    public Collection<MusicItem> selfTitledAlbulms() {       //
+
+         Collection<MusicItem> result = new ArrayList<>();
+
+         for(MusicItem item : catalogData) {
+             if(item.getTitle().equals(item.getArtist())) {
+                result.add(item);
+             }
+     }
+         return result;
+     }
 
     /**
      * TASK: find all "rock" items whose price is less than or equal to the specified price.
@@ -74,8 +146,23 @@ public abstract class InMemoryCatalog implements Catalog {
 
     /**
      * TASK: how many items of the specified genre (MusicCategory) do we sell?
+     *
      */
 
+        public boolean hasGenre(MusicCategory category){
+            return findByCategory(category).size() > 0;
+
+//
+//            boolean result = false;
+//
+//            for(MusicItem item : catalogData) {
+//                if(item.getMusicCategory().equals(category)) {
+//                    result = true;
+//                    break;
+//                }
+//            }
+//            return result;
+//        }
 
     /**
      * TASK: determine average price of our low-cost, extensive catalog of music.
