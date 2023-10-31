@@ -13,6 +13,7 @@ import com.javatunes.catalog.MusicCategory;
 import com.javatunes.catalog.MusicItem;
 
 import java.util.Collection;
+import java.util.Collections;
 
 class InMemoryCatalogTest {
 
@@ -28,7 +29,7 @@ class InMemoryCatalogTest {
         // testFindByKeyword();
         // testFindByCategory();
         // testSize();
-        // testGetAll();
+        testGetAll();
         // testFindSelfTitled();
 
 
@@ -78,6 +79,8 @@ class InMemoryCatalogTest {
             }
 
             private static void testGetAll () {
+                InMemoryCatalog catalog = new InMemoryCatalog();
+                Collections<MusicItem>
             }
 
         // helper method to show the collection "vertically
@@ -85,8 +88,7 @@ class InMemoryCatalogTest {
             for (MusicItem item : items) {
                 System.out.println(item);
             }
-        }
-    }
+        }}
 
 
 

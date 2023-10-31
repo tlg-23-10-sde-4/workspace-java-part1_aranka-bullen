@@ -119,7 +119,8 @@ public class InMemoryCatalog implements Catalog {
 
     @Override
     public Collection<MusicItem> getAll() {
-        return null;
+        InMemoryCatalog catalog = new InMemoryCatalog();
+        return Collections.unmodifiableCollection(catalogData);
     }
 
     /**
@@ -150,19 +151,19 @@ public class InMemoryCatalog implements Catalog {
      */
 
         public boolean hasGenre(MusicCategory category){
-            return findByCategory(category).size() > 0;
+        /*    return findByCategory(category).size() > 0; */
 
-//
-//            boolean result = false;
-//
-//            for(MusicItem item : catalogData) {
-//                if(item.getMusicCategory().equals(category)) {
-//                    result = true;
-//                    break;
-//                }
-//            }
-//            return result;
-//        }
+
+            boolean result = false;
+
+            for(MusicItem item : catalogData) {
+                if(item.getMusicCategory().equals(category)) {
+                    result = true;
+                    break;
+                }
+            }
+            return result;
+        }
 
     /**
      * TASK: determine average price of our low-cost, extensive catalog of music.
